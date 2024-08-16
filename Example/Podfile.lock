@@ -1,0 +1,27 @@
+PODS:
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - TencentCloudCustomer (0.1.0)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - TencentCloudCustomer (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - FBSnapshotTestCase
+
+EXTERNAL SOURCES:
+  TencentCloudCustomer:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  TencentCloudCustomer: 51c0e13ac70a09d0b77e1694908404cb7825a6e1
+
+PODFILE CHECKSUM: 408e22772aeab4ae5775ad3f18d714b26007f6a9
+
+COCOAPODS: 1.15.2

@@ -1,0 +1,6 @@
+framework module TencentCloudCustomer {
+  umbrella header "TencentCloudCustomer-umbrella.h"
+
+  export *
+  module * { export * }
+}

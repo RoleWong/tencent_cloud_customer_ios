@@ -1,0 +1,22 @@
+{
+  "name": "TencentCloudCustomer",
+  "version": "0.1.0",
+  "summary": "A short description of TencentCloudCustomer.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/24520036/TencentCloudCustomer",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "24520036": "814209329@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/24520036/TencentCloudCustomer.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "TencentCloudCustomer/Classes/**/*"
+}
