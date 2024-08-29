@@ -10,7 +10,7 @@
 #define TUICustomerServicePluginConfigDelegate_h
 
 #import <Foundation/Foundation.h>
-#import <TUICustomerServicePlugin/TUICustomerServicePluginConfig.h>
+#import <TDeskCustomerServicePlugin/TUICustomerServicePluginConfig.h>
 
 
 @interface TUICustomerServicePluginDelegate : NSObject <TUICustomerServicePluginConfigDataSource>

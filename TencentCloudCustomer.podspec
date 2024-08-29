@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TencentCloudCustomer'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = 'Tencent Cloud Smart Customer Service UIKit on Customer Side.'
 
 # This description is used to generate tags and improve search results.
@@ -23,28 +23,33 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://desk.qcloud.com/'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '24520036' => '814209329@qq.com' }
+  s.author           = { 'Tencent Cloud Desk' => '814209329@qq.com' }
+  s.swift_version = '5.0'
   s.source           = { :git => 'https://github.com/RoleWong/tencent_cloud_customer_ios', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '10.0'
   
-  s.dependency 'TUICore'
-  s.dependency 'TIMCommon'
-  s.dependency 'TUIChat'
-  s.dependency 'TUICustomerServicePlugin'
+  
+  s.vendored_frameworks = 'OpenTelemetry.framework'
+  
+  s.dependency 'TDeskCore'
+  s.dependency 'TDeskCommon'
+  s.dependency 'TDeskChat'
+  s.dependency 'TDeskCustomerServicePlugin'
+#  s.dependency 'OpenTelemetry'
 
   s.frameworks = 'UIKit', 'Foundation'
+  s.source_files = ['TencentCloudCustomer/Classes/**/*', 'OpenTelemetry/Classes/**/*']
+  s.public_header_files = ['TencentCloudCustomer/Classes/**/*.h', 'OpenTelemetry/Classes/**/*.h']
+#  s.source_files = 'TencentCloudCustomer/Classes/**/*'
+#  s.public_header_files = 'TencentCloudCustomer/Classes/**/*.h'
   
-  s.source_files = 'TencentCloudCustomer/Classes/**/*'
-  s.public_header_files = 'TencentCloudCustomer/Classes/**/*.h'
   s.resource = ['Resources/*.bundle']
   
-  # s.resource_bundles = {
-  #   'TencentCloudCustomer' => ['TencentCloudCustomer/Assets/*.png']
-  # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
+

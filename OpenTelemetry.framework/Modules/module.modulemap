@@ -1,0 +1,6 @@
+framework module OpenTelemetry {
+  umbrella header "OpenTelemetry-umbrella.h"
+
+  export *
+  module * { export * }
+}

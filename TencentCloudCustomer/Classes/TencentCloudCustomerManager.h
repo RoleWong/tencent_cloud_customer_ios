@@ -9,6 +9,7 @@
 #define TUICustomerManager_h
 
 #import "TUICustomerServicePluginMenuView.h"
+#import "TUIBaseChatViewController.h"
 
 @interface TencentCloudCustomerManager : NSObject
 
@@ -17,6 +18,8 @@
 - (void)loginWithSdkAppID:(int) sdkAppId userID: (NSString *) userID userSig: (NSString *) userSig completion:(void(^)(NSError *error))completion;
 
 - (void)setCustomerServiceUserID:(NSString *)userID;
+
+- (TUIBaseChatViewController *) getCustomerServiceViewController;
 
 - (void)pushToCustomerServiceViewControllerFromController:(UIViewController *)controller;
 
