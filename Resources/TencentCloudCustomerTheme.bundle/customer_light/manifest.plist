@@ -220,5 +220,7 @@
 	<string>#006EFF</string>
 	<key>bot_branch_cell_content_text_color</key>
 	<string>#333333</string>
+	<key>chat_customer_bg_img</key>
+	<string>chat_bg.png</string>
 </dict>
 </plist>

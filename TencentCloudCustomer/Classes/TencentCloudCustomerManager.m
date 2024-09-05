@@ -18,6 +18,7 @@
 #import "TUICustomerServicePluginExtensionObserver.h"
 #import "TUICustomerServicePluginPrivateConfig.h"
 #import "TUICustomerServicePluginProductInfo.h"
+#import "TDeskChat/TUIChatConfig.h"
 #import "TencentCloudCustomer/TencentCloudCustomerLoggerObjC.h"
 #import "TUICustomerServicePluginConfigDelegate.h"
 #import <TencentCloudCustomer/TencentCloudCustomer-Swift.h>
@@ -70,10 +71,12 @@
     TUICustomerServicePluginPrivateConfig *cusomterServiceConfig = [TUICustomerServicePluginPrivateConfig sharedInstance];
     TUIChatConversationModel *conversationData = [[TUIChatConversationModel alloc] init];
     conversationData.userID = cusomterServiceConfig.customerServiceAccounts.firstObject;
+    conversationData.conversationID = [NSString stringWithFormat:@"c2c_%@", conversationData.userID];
 
     TUIBaseChatViewController *chatVC = nil;
     chatVC = [[TUIC2CChatViewController alloc] init];
     chatVC.conversationData = conversationData;
+    
     return chatVC;
 }
 
@@ -102,18 +105,22 @@
 
 - (void) initUIKit{
     [self applyTheme:@"customer_light"];
-    [TUIMessageCellLayout outgoingTextMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TUIMessageCellLayout incommingMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TUIMessageCellLayout outgoingMessageLayout].avatarSize = CGSizeMake(0, 0);
+    
     [TUIMessageCellLayout incommingTextMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TUIMessageCellLayout outgoingTextMessageLayout].avatarSize = CGSizeMake(0, 0);
+    
+    [TUIMessageCellLayout incommingImageMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TUIMessageCellLayout outgoingImageMessageLayout].avatarSize = CGSizeMake(0, 0);
+    
+    [TUIMessageCellLayout incommingVideoMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TUIMessageCellLayout outgoingVideoMessageLayout].avatarSize = CGSizeMake(0, 0);
+    
+    [TUIMessageCellLayout incommingVoiceMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TUIMessageCellLayout outgoingVoiceMessageLayout].avatarSize = CGSizeMake(0, 0);
+    
     [TUICustomerServicePluginConfig sharedInstance].delegate = [TUICustomerServicePluginDelegate sharedInstance];
 }
-
-- (void)setupTelemetry {
-    // 使用 OpenTelemetry 进行数据上报的代码
-    // 例如，初始化 tracer
-//    Tracer *tracer = [OpenTelemetry.sharedTracerProvider getTracer:@"YourTracerName"];
-    // 进行数据上报
-//    TracerObjc *tracer = [OpenTelemetryObjc.instance.tracerProvider getWithInstrumentationName:@"app" instrumentationVersion:@"1.0"];
-}
-
 
 @end

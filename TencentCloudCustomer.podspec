@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TencentCloudCustomer'
-  s.version          = '1.1.0'
+  s.version          = '2.1.0'
   s.summary          = 'Tencent Cloud Smart Customer Service UIKit on Customer Side.'
 
 # This description is used to generate tags and improve search results.
@@ -33,10 +33,10 @@ Pod::Spec.new do |s|
   
   s.vendored_frameworks = 'OpenTelemetry.framework'
   
-  s.dependency 'TDeskCore'
-  s.dependency 'TDeskCommon'
-  s.dependency 'TDeskChat'
-  s.dependency 'TDeskCustomerServicePlugin'
+  s.dependency 'TDeskCore', '~> 2.1.0'
+  s.dependency 'TDeskCommon', '~> 2.1.0'
+  s.dependency 'TDeskChat', '~> 2.1.0'
+  s.dependency 'TDeskCustomerServicePlugin', '~> 2.1.0'
 #  s.dependency 'OpenTelemetry'
 
   s.frameworks = 'UIKit', 'Foundation'
