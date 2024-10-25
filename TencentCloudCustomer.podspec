@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TencentCloudCustomer'
-  s.version          = '2.1.0'
+  s.version          = '2.2.0'
   s.summary          = 'Tencent Cloud Smart Customer Service UIKit on Customer Side.'
 
 # This description is used to generate tags and improve search results.
@@ -36,14 +36,13 @@ Pod::Spec.new do |s|
   s.dependency 'TDeskCore', '~> 2.1.0'
   s.dependency 'TDeskCommon', '~> 2.1.0'
   s.dependency 'TDeskChat', '~> 2.1.0'
-  s.dependency 'TDeskCustomerServicePlugin', '~> 2.1.0'
-#  s.dependency 'OpenTelemetry'
-
+  s.dependency 'TDeskCustomerServicePlugin', '~> 2.2.0'
+  
   s.frameworks = 'UIKit', 'Foundation'
-  s.source_files = ['TencentCloudCustomer/Classes/**/*', 'OpenTelemetry/Classes/**/*']
-  s.public_header_files = ['TencentCloudCustomer/Classes/**/*.h', 'OpenTelemetry/Classes/**/*.h']
-#  s.source_files = 'TencentCloudCustomer/Classes/**/*'
-#  s.public_header_files = 'TencentCloudCustomer/Classes/**/*.h'
+#  s.source_files = ['TencentCloudCustomer/Classes/**/*', 'OpenTelemetry/Classes/**/*']
+#  s.public_header_files = ['TencentCloudCustomer/Classes/**/*.h', 'OpenTelemetry/Classes/**/*.h']
+  s.source_files = 'TencentCloudCustomer/Classes/**/*'
+  s.public_header_files = 'TencentCloudCustomer/Classes/**/*.h'
   
   s.resource = ['Resources/*.bundle']
   

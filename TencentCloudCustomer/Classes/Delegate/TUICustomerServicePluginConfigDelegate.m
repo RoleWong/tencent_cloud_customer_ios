@@ -11,6 +11,7 @@
 #import "TUICustomerServicePluginMenuView.h"
 #import "TUICustomerServicePluginDataProvider.h"
 #import "TUICustomerServicePluginExtensionObserver.h"
+#import <TDeskCommon/TIMDefine.h>
 
 @implementation TUICustomerServicePluginDelegate
 
@@ -36,6 +37,7 @@
     TUICustomerServicePluginMenuCellData *toHuman = [TUICustomerServicePluginMenuCellData new];
     NSString *toHumanMsg = @"人工服务";
     toHuman.title = toHumanMsg;
+    toHuman.icon = TUICustomerServicePluginBundleThemeImage(@"to_human_img", @"to_human");
     toHuman.onClick = ^{
         [TUICustomerServicePluginDataProvider sendTextMessage:toHumanMsg];
     };
