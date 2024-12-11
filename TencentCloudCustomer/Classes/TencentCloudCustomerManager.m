@@ -37,12 +37,12 @@
 
 - (void)loginWithSdkAppID:(int)sdkAppId userID:(NSString *)userID userSig:(NSString *)userSig completion:(void(^)(NSError *error))completion {
     
-    NSString *logMessage = [NSString stringWithFormat:@"Tencent Cloud Customer loginWithSdkAppID: %d, userID: %@, and userSig: %@", sdkAppId, userID, userSig];
-    NSDictionary *attributes = @{
-        @"sdkAppId": @(sdkAppId),
-        @"userID": userID,
-        @"userSig": userSig
-    };
+//    NSString *logMessage = [NSString stringWithFormat:@"Tencent Cloud Customer loginWithSdkAppID: %d, userID: %@, and userSig: %@", sdkAppId, userID, userSig];
+//    NSDictionary *attributes = @{
+//        @"sdkAppId": @(sdkAppId),
+//        @"userID": userID,
+//        @"userSig": userSig
+//    };
 //    OTSpan *loginSpan = [TencentCloudCustomerLoggerObjC.sharedLoggerManager startSpan:logMessage attributes:attributes];
     
     [self initUIKit];
@@ -96,6 +96,8 @@
     
     TUIRegisterThemeResourcePath(customerThemePath, TUIThemeModuleCustomerService);
     [TUIShareThemeManager applyTheme:themeID forModule:TUIThemeModuleCustomerService];
+    
+    [TUIShareThemeManager applyTheme:@"light" forModule:TUIThemeModuleTIMCommon];
 }
 
 - (void)setQuickMessages:(NSArray<TUICustomerServicePluginMenuCellData *> *)menuItems{
@@ -119,6 +121,9 @@
     
     [TUIMessageCellLayout incommingVoiceMessageLayout].avatarSize = CGSizeMake(0, 0);
     [TUIMessageCellLayout outgoingVoiceMessageLayout].avatarSize = CGSizeMake(0, 0);
+    
+    [TUIChatConfig defaultConfig].enablePopMenuReplyAction = NO;
+    [TUIChatConfig defaultConfig].enablePopMenuEmojiReactAction = NO;
     
     [TUICustomerServicePluginConfig sharedInstance].delegate = [TUICustomerServicePluginDelegate sharedInstance];
 }

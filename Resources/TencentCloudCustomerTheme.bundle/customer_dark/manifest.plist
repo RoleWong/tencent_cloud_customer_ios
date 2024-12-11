@@ -30,6 +30,10 @@
 	<string>#8C8C8C</string>
 	<key>chat_face_page_control_color</key>
 	<string>#373737</string>
+	<key>information_collection_done</key>
+	<string>information_collection_done.png</string>
+	<key>information_collection</key>
+	<string>information_collection.png</string>
 	<key>chat_face_menu_select_color</key>
 	<string>#292901</string>
 	<key>chat_more_camera_img</key>
@@ -287,7 +291,7 @@
 	<key>bot_branch_cell_header_text_color_2</key>
 	<string>#000000</string>
 	<key>bot_branch_cell_refresh_btn_color</key>
-	<string>#147AFF</string>
+	<string>#000000</string>
 	<key>bot_branch_cell_number_text_color</key>
 	<string>#147AFF</string>
 	<key>bot_branch_cell_content_text_color</key>

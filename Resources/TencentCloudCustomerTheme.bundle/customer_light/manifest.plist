@@ -56,6 +56,10 @@
 	<string>chat_bubble_send_alpha50.png</string>
 	<key>chat_bubble_receive_img</key>
 	<string>chat_bubble_receive.png</string>
+	<key>information_collection_done</key>
+	<string>information_collection_done.png</string>
+	<key>information_collection</key>
+	<string>information_collection.png</string>
 	<key>chat_bubble_receive_alpha20_img</key>
 	<string>chat_bubble_receive_alpha20.png</string>
 	<key>chat_bubble_receive_alpha50_img</key>
@@ -95,7 +99,7 @@
 	<key>chat_reply_message_quoteView_recv_text_color</key>
 	<string>#888888</string>
 	<key>chat_reference_message_content_text_color</key>
-	<string>#000000</string>
+	<string>#FFFFFF</string>
 	<key>chat_reference_message_quoteView_text_color</key>
 	<string>#888888</string>
 	<key>chat_reference_message_quoteView_bg_color</key>
@@ -107,7 +111,7 @@
 	<key>chat_reference_message_quoteView_recv_text_color</key>
 	<string>#888888</string>
 	<key>chat_voice_message_send_duration_time_color</key>
-	<string>#000000</string>
+	<string>#FFFFFF</string>
 	<key>chat_voice_message_recv_duration_time_color</key>
 	<string>#000000</string>
 	<key>chat_voice_message_sender_voice_normal_img</key>
@@ -217,7 +221,7 @@
 	<key>bot_branch_cell_header_text_color_2</key>
 	<string>#000000</string>
 	<key>bot_branch_cell_refresh_btn_color</key>
-	<string>#006EFF</string>
+	<string>#000000</string>
 	<key>bot_branch_cell_number_text_color</key>
 	<string>#006EFF</string>
 	<key>bot_branch_cell_content_text_color</key>

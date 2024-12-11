@@ -35,7 +35,7 @@
     NSMutableArray *dataSource = [NSMutableArray new];
     
     TUICustomerServicePluginMenuCellData *toHuman = [TUICustomerServicePluginMenuCellData new];
-    NSString *toHumanMsg = @"人工服务";
+    NSString *toHumanMsg = TIMCommonLocalizableString(TUICustomerHumanService);
     toHuman.title = toHumanMsg;
     toHuman.icon = TUICustomerServicePluginBundleThemeImage(@"to_human_img", @"to_human");
     toHuman.onClick = ^{
