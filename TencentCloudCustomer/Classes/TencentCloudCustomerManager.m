@@ -7,18 +7,18 @@
 
 #import <Foundation/Foundation.h>
 #import "TencentCloudCustomerManager.h"
-#import <TDeskCore/TUILogin.h>
+#import <TDeskCore/TDesk_TUILogin.h>
 #import "TUICustomerServicePluginPrivateConfig.h"
-#import "TUIC2CChatViewController.h"
+#import <TDeskChat/TDesk_TUIC2CChatViewController.h>
 #import "TUICustomerServicePluginDataProvider.h"
-#import "TDeskCore/TUIThemeManager.h"
+#import "TDeskCore/TDesk_TUIThemeManager.h"
 #import "TUICustomerServicePluginConfig.h"
 #import "TUICustomerServicePluginMenuView.h"
 #import "TUICustomerServicePluginDataProvider.h"
 #import "TUICustomerServicePluginExtensionObserver.h"
 #import "TUICustomerServicePluginPrivateConfig.h"
 #import "TUICustomerServicePluginProductInfo.h"
-#import "TDeskChat/TUIChatConfig.h"
+#import "TDeskChat/TDesk_TUIChatConfig.h"
 #import "TencentCloudCustomer/TencentCloudCustomerLoggerObjC.h"
 #import "TUICustomerServicePluginConfigDelegate.h"
 #import <TencentCloudCustomer/TencentCloudCustomer-Swift.h>
@@ -37,27 +37,21 @@
 
 - (void)loginWithSdkAppID:(int)sdkAppId userID:(NSString *)userID userSig:(NSString *)userSig completion:(void(^)(NSError *error))completion {
     
-//    NSString *logMessage = [NSString stringWithFormat:@"Tencent Cloud Customer loginWithSdkAppID: %d, userID: %@, and userSig: %@", sdkAppId, userID, userSig];
-//    NSDictionary *attributes = @{
-//        @"sdkAppId": @(sdkAppId),
-//        @"userID": userID,
-//        @"userSig": userSig
-//    };
-//    OTSpan *loginSpan = [TencentCloudCustomerLoggerObjC.sharedLoggerManager startSpan:logMessage attributes:attributes];
+    OTSpan *loginSpan = [TencentCloudCustomerLoggerObjC.sharedLoggerManager reportLogin:sdkAppId userID:userID userSig:userSig];
     
     [self initUIKit];
     
-    [TUILogin login:sdkAppId userID:userID userSig:userSig succ:^{
+    [TDeskLogin login:sdkAppId userID:userID userSig:userSig succ:^{
         NSLog(@"登录成功");
         completion(nil);
-//        [loginSpan end];
+        [loginSpan end];
     } fail:^(int code, NSString *msg) {
         NSLog(@"登录失败, reason:%@", msg);
         // 登录失败，创建一个 NSError 对象并传递给 completion
         NSDictionary *userInfo = @{NSLocalizedDescriptionKey: msg};
         NSError *error = [NSError errorWithDomain:@"com.tencent.qcloud.customeruikit" code:code userInfo:userInfo];
         completion(error);
-//        [loginSpan end];
+        [loginSpan end];
     }];
 }
 
@@ -67,14 +61,14 @@
     cusomterServiceConfig.customerServiceAccounts = customerServiceUserID;
 }
 
-- (TUIBaseChatViewController *) getCustomerServiceViewController{
+- (TDeskBaseChatViewController *) getCustomerServiceViewController{
     TUICustomerServicePluginPrivateConfig *cusomterServiceConfig = [TUICustomerServicePluginPrivateConfig sharedInstance];
-    TUIChatConversationModel *conversationData = [[TUIChatConversationModel alloc] init];
+    TDeskChatConversationModel *conversationData = [[TDeskChatConversationModel alloc] init];
     conversationData.userID = cusomterServiceConfig.customerServiceAccounts.firstObject;
     conversationData.conversationID = [NSString stringWithFormat:@"c2c_%@", conversationData.userID];
 
-    TUIBaseChatViewController *chatVC = nil;
-    chatVC = [[TUIC2CChatViewController alloc] init];
+    TDeskBaseChatViewController *chatVC = nil;
+    chatVC = [[TDeskC2CChatViewController alloc] init];
     chatVC.conversationData = conversationData;
     
     return chatVC;
@@ -83,7 +77,7 @@
 - (void)pushToCustomerServiceViewControllerFromController:(UIViewController *)controller {
     [controller.navigationController pushViewController:[self getCustomerServiceViewController] animated:YES];
 
-    NSData *data = [TUITool dictionary2JsonData:@{@"src": BussinessID_Src_CustomerService_Request}];
+    NSData *data = [TDeskTool dictionary2JsonData:@{@"src": BussinessID_Src_CustomerService_Request}];
     [TUICustomerServicePluginDataProvider sendCustomMessageWithoutUpdateUI:data];
 }
 
@@ -91,13 +85,13 @@
     NSBundle *customerBundle = [NSBundle bundleForClass:[self class]];
     NSString *customerThemePath = [customerBundle pathForResource:@"TencentCloudCustomerTheme.bundle" ofType:nil];
     
-    TUIRegisterThemeResourcePath(customerThemePath, TUIThemeModuleChat);
-    [TUIShareThemeManager applyTheme:themeID forModule:TUIThemeModuleChat];
+    TDeskRegisterThemeResourcePath(customerThemePath, TUIThemeModuleChat);
+    [TDeskShareThemeManager applyTheme:themeID forModule:TUIThemeModuleChat];
     
-    TUIRegisterThemeResourcePath(customerThemePath, TUIThemeModuleCustomerService);
-    [TUIShareThemeManager applyTheme:themeID forModule:TUIThemeModuleCustomerService];
+    TDeskRegisterThemeResourcePath(customerThemePath, TUIThemeModuleCustomerService);
+    [TDeskShareThemeManager applyTheme:themeID forModule:TUIThemeModuleCustomerService];
     
-    [TUIShareThemeManager applyTheme:@"light" forModule:TUIThemeModuleTIMCommon];
+    [TDeskShareThemeManager applyTheme:@"light" forModule:TUIThemeModuleTIMCommon];
 }
 
 - (void)setQuickMessages:(NSArray<TUICustomerServicePluginMenuCellData *> *)menuItems{
@@ -107,23 +101,23 @@
 
 - (void) initUIKit{
     [self applyTheme:@"customer_light"];
-    [TUIMessageCellLayout incommingMessageLayout].avatarSize = CGSizeMake(0, 0);
-    [TUIMessageCellLayout outgoingMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TDeskMessageCellLayout incommingMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TDeskMessageCellLayout outgoingMessageLayout].avatarSize = CGSizeMake(0, 0);
     
-    [TUIMessageCellLayout incommingTextMessageLayout].avatarSize = CGSizeMake(0, 0);
-    [TUIMessageCellLayout outgoingTextMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TDeskMessageCellLayout incommingTextMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TDeskMessageCellLayout outgoingTextMessageLayout].avatarSize = CGSizeMake(0, 0);
     
-    [TUIMessageCellLayout incommingImageMessageLayout].avatarSize = CGSizeMake(0, 0);
-    [TUIMessageCellLayout outgoingImageMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TDeskMessageCellLayout incommingImageMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TDeskMessageCellLayout outgoingImageMessageLayout].avatarSize = CGSizeMake(0, 0);
     
-    [TUIMessageCellLayout incommingVideoMessageLayout].avatarSize = CGSizeMake(0, 0);
-    [TUIMessageCellLayout outgoingVideoMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TDeskMessageCellLayout incommingVideoMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TDeskMessageCellLayout outgoingVideoMessageLayout].avatarSize = CGSizeMake(0, 0);
     
-    [TUIMessageCellLayout incommingVoiceMessageLayout].avatarSize = CGSizeMake(0, 0);
-    [TUIMessageCellLayout outgoingVoiceMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TDeskMessageCellLayout incommingVoiceMessageLayout].avatarSize = CGSizeMake(0, 0);
+    [TDeskMessageCellLayout outgoingVoiceMessageLayout].avatarSize = CGSizeMake(0, 0);
     
-    [TUIChatConfig defaultConfig].enablePopMenuReplyAction = NO;
-    [TUIChatConfig defaultConfig].enablePopMenuEmojiReactAction = NO;
+    [TDeskChatConfig defaultConfig].enablePopMenuReplyAction = NO;
+    [TDeskChatConfig defaultConfig].enablePopMenuEmojiReactAction = NO;
     
     [TUICustomerServicePluginConfig sharedInstance].delegate = [TUICustomerServicePluginDelegate sharedInstance];
 }

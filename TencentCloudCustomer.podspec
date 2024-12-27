@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TencentCloudCustomer'
-  s.version          = '2.3.0'
-  s.summary          = 'Tencent Cloud Smart Customer Service UIKit on Customer Side.'
+  s.version          = '2.4.0'
+  s.summary          = 'Tencent Cloud Desk on Customer Side UIKit.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -33,16 +33,16 @@ Pod::Spec.new do |s|
   
 #  s.vendored_frameworks = 'OpenTelemetry.framework'
   
-  s.dependency 'TDeskCore', '~> 2.3.0'
-  s.dependency 'TDeskCommon', '~> 2.3.1'
-  s.dependency 'TDeskChat', '~> 2.3.2'
-  s.dependency 'TDeskCustomerServicePlugin', '~> 2.3.2'
+  s.dependency 'TDeskCore', '~> 2.4.0'
+  s.dependency 'TDeskCommon', '~> 2.4.1'
+  s.dependency 'TDeskChat', '~> 2.4.0'
+  s.dependency 'TDeskCustomerServicePlugin', '~> 2.4.0'
   
   s.frameworks = 'UIKit', 'Foundation'
-#  s.source_files = ['TencentCloudCustomer/Classes/**/*', 'OpenTelemetry/Classes/**/*']
-#  s.public_header_files = ['TencentCloudCustomer/Classes/**/*.h', 'OpenTelemetry/Classes/**/*.h']
-  s.source_files = 'TencentCloudCustomer/Classes/**/*'
-  s.public_header_files = 'TencentCloudCustomer/Classes/**/*.h'
+  s.source_files = ['TencentCloudCustomer/Classes/**/*', 'OpenTelemetry/Classes/**/*']
+  s.public_header_files = ['TencentCloudCustomer/Classes/**/*.h', 'OpenTelemetry/Classes/**/*.h']
+#  s.source_files = 'TencentCloudCustomer/Classes/**/*'
+#  s.public_header_files = 'TencentCloudCustomer/Classes/**/*.h'
   
   s.resource = ['Resources/*.bundle']
   
@@ -51,4 +51,3 @@ Pod::Spec.new do |s|
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
-

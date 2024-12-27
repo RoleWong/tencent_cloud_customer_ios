@@ -11,7 +11,7 @@
 #import "TUICustomerServicePluginMenuView.h"
 #import "TUICustomerServicePluginDataProvider.h"
 #import "TUICustomerServicePluginExtensionObserver.h"
-#import <TDeskCommon/TIMDefine.h>
+#import <TDeskCommon/TDesk_TIMDefine.h>
 
 @implementation TUICustomerServicePluginDelegate
 
